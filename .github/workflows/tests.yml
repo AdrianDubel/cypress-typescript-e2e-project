@@ -3,6 +3,9 @@ on: [push]
 jobs:
  Cypress-Test:
    runs-on: ubuntu-latest
+   environment: 
+      name: test_application
+      url: http://localhost:9000/
    
    steps:
      - name: Checkout GitCode
@@ -21,7 +24,7 @@ jobs:
        with:
          command: npx cypress run --browser chrome
         #  env: true
-         env:
+       env:
          CYPRESS_BASE_URL: 'http://localhost:9000/'
          CYPRESS_USERNAME: ${{ secrets.CYPRESS_USERNAME }}
-         CYPRESS_CYPRESS_PASSWORD:  ${{ secrets.CYPRESS_PASSWORD }}
+         CYPRESS_PASSWORD:  ${{ secrets.CYPRESS_PASSWORD }}
