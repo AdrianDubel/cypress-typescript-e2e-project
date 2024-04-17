@@ -19,6 +19,8 @@ jobs:
      - name: Run Cypress Test
        uses: cypress-io/github-action@v4
        with:
+       command: npx cypress run --browser chrome 
+       env:
          CYPRESS_USERNAME: ${{ secrets.CYPRESS_USERNAME }}
          CYPRESS_PASSWORD: ${{ secrets.CYPRESS_PASSWORD }}
-         command: npx cypress run --browser chrome 
+         
