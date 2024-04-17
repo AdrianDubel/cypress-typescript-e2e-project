@@ -25,7 +25,7 @@ jobs:
          CYPRESS_USERNAME: ${{ secrets.CYPRESS_USERNAME }}
          CYPRESS_PASSWORD: ${{ secrets.CYPRESS_PASSWORD }}
 
-      - name: Send Test Report Email
+     - name: Send Test Report Email
         uses: dawidd6/action-send-mail@v3
         with:
           server_address: smtp.gmail.com
