@@ -22,6 +22,6 @@ jobs:
          command: npx cypress run --browser chrome
         #  env: true
          env:
-          CYPRESS_BASE_URL: 'http://localhost:9000/'
-          CYPRESS_USERNAME: ${{ secrets.CYPRESS_USERNAME }}
-          CYPRESS_CYPRESS_PASSWORD:  ${{ secrets.CYPRESS_PASSWORD }}
+         CYPRESS_BASE_URL: 'http://localhost:9000/'
+         CYPRESS_USERNAME: ${{ secrets.CYPRESS_USERNAME }}
+         CYPRESS_CYPRESS_PASSWORD:  ${{ secrets.CYPRESS_PASSWORD }}
