@@ -3,9 +3,6 @@ on: [push]
 jobs:
  Cypress-Test:
    runs-on: ubuntu-latest
-   environment: 
-      name: test_application
-      url: http://localhost:9000/
    
    steps:
      - name: Checkout GitCode
@@ -19,12 +16,15 @@ jobs:
          npx http-server -p 9000 &
          sleep 2 # Poczekaj chwilę na uruchomienie serwera
 
+    
+     - name: Add credentials
+       with: # Set the secret as an input
+        username: ${{ secrets.CYPRESS_USERNAME }}
+        password: ${{ secrets.CYPRESS_PASSWORD }}
+        #  env: # Or as an environment variable
+        #  super_secret: ${{ secrets.SuperSecret }}
+
      - name: Run Cypress Test
        uses: cypress-io/github-action@v4
        with:
-         command: npx cypress run --browser chrome --env CYPRESS_USERNAME=${{ secrets.CYPRESS_USERNAME }},CYPRESS_PASSWORD=${{ secrets.CYPRESS_PASSWORD }}
-        #  env: true
-       env:
-         CYPRESS_BASE_URL: 'http://localhost:9000/'
-         CYPRESS_USERNAME: ${{ secrets.CYPRESS_USERNAME }}
-         CYPRESS_PASSWORD:  ${{ secrets.CYPRESS_PASSWORD }}
+         command: npx cypress run --browser chrome 
