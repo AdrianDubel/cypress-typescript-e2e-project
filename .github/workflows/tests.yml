@@ -20,7 +20,7 @@ jobs:
        uses: cypress-io/github-action@v4
        with:
          command: npx cypress run --browser chrome
-         env: true
+        #  env: true
          env:
           CYPRESS_BASE_URL: 'http://localhost:9000/'
           CYPRESS_USERNAME: ${{ secrets.CYPRESS_USERNAME }}
