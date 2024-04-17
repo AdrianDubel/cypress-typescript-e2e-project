@@ -28,5 +28,6 @@ jobs:
      - name: Upload Test Report
        uses: actions/upload-artifact@v2
        with:
+         continue-on-error: true
          name: cypress-test-report
          path: cypress/reports/html/index.html    
