@@ -3,9 +3,7 @@ on: [push]
 jobs:
  Cypress-Test:
    runs-on: ubuntu-latest
-   env:
-      USERNAME: ${{ secrets.CYPRESS_USERNAME }}
-      PASSWORD: ${{ secrets.CYPRESS_PASSWORD }}
+   
    steps:
      - name: Checkout GitCode
        uses: actions/checkout@v2
@@ -22,3 +20,8 @@ jobs:
        uses: cypress-io/github-action@v4
        with:
          command: npx cypress run --browser chrome
+         env: true
+         env:
+          CYPRESS_BASE_URL: 'http://localhost:9000/'
+          CYPRESS_USERNAME: ${{ secrets.CYPRESS_USERNAME }}
+          CYPRESS_CYPRESS_PASSWORD:  ${{ secrets.CYPRESS_PASSWORD }}
