@@ -4,8 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "http-server -p 3000"
+    "dev": "http-server -p 9000",
+    "tests:headed": "npx cypress open",
+    "test:headless": "npx cypress run --browser chrome"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "cypress": "^13.7.3",
+    "typescript": "^5.4.5"
+  }
 }
