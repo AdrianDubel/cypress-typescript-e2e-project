@@ -3,7 +3,7 @@ on: [push]
 jobs:
  Cypress-Test:
    runs-on: ubuntu-latest
-    env:
+   env:
       USERNAME: ${{ secrets.CYPRESS_USERNAME }}
       PASSWORD: ${{ secrets.CYPRESS_PASSWORD }}
    steps:
