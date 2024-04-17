@@ -1,13 +1,16 @@
 import loginPage from "../support/pages/login.page";
 import homePage from "../support/pages/home.page";
 
-describe('Login tests', ()=>{
+describe("Login tests", () => {
+  it("Login using correct credentials", () => {
+    const username = Cypress.env("USERNAME");
+    const password = Cypress.env("PASSWORD");
 
-    it('Login using correct credentials', () => {
-        cy.visit('/')
-        loginPage.login(Cypress.env('USERNAME'), Cypress.env('PASSWORD'))
-        cy.get(homePage.element.userName)
-          .should('be.visible')
-          .and('contain.text', 'test_user')
-    });
-})
+    cy.visit("/");
+    loginPage.login(username, password);
+    homePage.elements
+      .userName()
+      .should("be.visible")
+      .and("contain.text", username);
+  });
+});
