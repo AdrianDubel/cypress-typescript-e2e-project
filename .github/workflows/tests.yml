@@ -4,7 +4,7 @@ jobs:
  Cypress-Test:
    runs-on: ubuntu-latest
    
-   steps:
+  steps:
      - name: Checkout GitCode
        uses: actions/checkout@v2
  
