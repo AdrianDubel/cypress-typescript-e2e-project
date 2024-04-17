@@ -24,16 +24,16 @@ jobs:
        env:
          CYPRESS_USERNAME: ${{ secrets.CYPRESS_USERNAME }}
          CYPRESS_PASSWORD: ${{ secrets.CYPRESS_PASSWORD }}
-         
+
      - name: Send Test Report Email
-        uses: dawidd6/action-send-mail@v3
-        with:
-          server_address: smtp.gmail.com
-          server_port: 587
-          username: adrian.dubel88@gmail.com
-          email_password: ${{ secrets.EMAIL_PASSWORD }}
-          subject: "Cypress Test Report"
-          to: wuper.dev88@gmail.com
-          from: adrian.dubel88@gmail.com
-          body: "Attached is the Cypress test report."
-          attachments: cypress/reports/html/index.html    
+       uses: dawidd6/action-send-mail@v3
+       with:
+        server_address: smtp.gmail.com
+        server_port: 587
+        username: adrian.dubel88@gmail.com
+        email_password: ${{ secrets.EMAIL_PASSWORD }}
+        subject: "Cypress Test Report"
+        to: wuper.dev88@gmail.com
+        from: adrian.dubel88@gmail.com
+        body: "Attached is the Cypress test report."
+        attachments: cypress/reports/html/index.html    
