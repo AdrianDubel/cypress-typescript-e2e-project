@@ -6,11 +6,12 @@
   "scripts": {
     "dev": "http-server -p 9000",
     "tests:headed": "npx cypress open",
-    "test:headless": "npx cypress run --browser chrome"
+    "tests:headless": "npx cypress run --browser chrome"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cypress-mochawesome-reporter": "^3.8.2",
     "typescript": "^5.4.5"
   },
   "devDependencies": {
