@@ -5,7 +5,7 @@ describe('Login tests', ()=>{
 
     it('Login using correct credentials', () => {
         cy.visit('/')
-        loginPage.login(Cypress.env('username'), Cypress.env('password'))
+        loginPage.login(Cypress.env('USERNAME'), Cypress.env('PASSWORD'))
         cy.get(homePage.element.userName)
           .should('be.visible')
           .and('contain.text', 'test_user')
