@@ -14,11 +14,9 @@ jobs:
        run: npm install
 
      - name: Start Local Server
-       run: npx http-server -p 9000 &
-      #  background: true 
-
-     - name: Wait for Server to Start
-       run: sleep 5 
+       run: |
+         npx http-server -p 9000 &
+         sleep 2 # Poczekaj chwilę na uruchomienie serwera
 
      - name: Run Cypress Test
        uses: cypress-io/github-action@v4
