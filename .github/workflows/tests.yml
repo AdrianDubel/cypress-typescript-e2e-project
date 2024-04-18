@@ -22,7 +22,7 @@ jobs:
           npx cypress run --browser chrome
           echo "CYPRESS_EXIT_CODE=$?" >> $GITHUB_ENV || true
 
-      - name: Set failed status
+      - name: Set status
         if: env.CYPRESS_EXIT_CODE != '0'
         run: exit 1
 

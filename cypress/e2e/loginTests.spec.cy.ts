@@ -11,6 +11,6 @@ describe("Login tests", () => {
     homePage.elements
       .userName()
       .should("be.visible")
-      .and("contain.text", 'dupa');
+      .and("contain.text", username);
   });
 });
