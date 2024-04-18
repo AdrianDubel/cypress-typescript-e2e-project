@@ -3,6 +3,7 @@ class LoginPage {
     usernameInput: () => cy.get('[data-testid="username"]'),
     passwordInput: () => cy.get('[data-testid="password"]'),
     submitBtn: () => cy.get('[data-testid="submit-btn"]'),
+    errorMessage: () => cy.get('[data-testid="error-message"]')
   };
 
   login(username: string, password: string) {
