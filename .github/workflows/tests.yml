@@ -26,12 +26,21 @@ jobs:
          CYPRESS_USERNAME: ${{ secrets.CYPRESS_USERNAME }}
          CYPRESS_PASSWORD: ${{ secrets.CYPRESS_PASSWORD }}
 
-     - name: Upload Test Report
-       uses: actions/upload-artifact@v2
-       with:
-        #  continue-on-error: true
-         name: cypress-test-report
-         path: cypress/reports/html/index.html
+    #  - name: Upload Test Report
+    #    uses: actions/upload-artifact@v2
+    #    with:
+    #     #  continue-on-error: true
+    #      name: cypress-test-report
+    #      path: cypress/reports/html/index.html
      - name: Set failed status
        if: env.CYPRESS_EXIT_CODE != '0'
        run: exit 1
+
+post:
+
+    always:
+     - name: Upload Test Report
+       uses: actions/upload-artifact@v2
+       with:
+         name: cypress-test-report
+         path: cypress/reports/html/index.html
