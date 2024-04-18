@@ -1,7 +1,7 @@
 import loginPage from "../support/pages/login.page";
 import homePage from "../support/pages/home.page";
 
-describe("Login tests", () => {
+describe("Second tests", () => {
   it("Login using correct credentials", () => {
     const username = Cypress.env("USERNAME");
     const password = Cypress.env("PASSWORD");
@@ -11,6 +11,6 @@ describe("Login tests", () => {
     homePage.elements
       .userName()
       .should("be.visible")
-      .and("contain.text", 'dupa');
+      .and("contain.text", username);
   });
 });
