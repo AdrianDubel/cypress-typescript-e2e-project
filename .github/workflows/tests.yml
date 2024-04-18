@@ -1,46 +1,34 @@
 name: Cypress Tests
 on: [push]
 jobs:
- Cypress-Test:
-   runs-on: ubuntu-latest
-   
-   steps:
-     - name: Checkout GitCode
-       uses: actions/checkout@v2
- 
-     - name: Install dependencies
-       run: npm install
+  Cypress-Test:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout GitCode
+        uses: actions/checkout@v2
 
-     - name: Start Local Server
-       run: |
-         npx http-server -p 9000 &
-         sleep 2 # Poczekaj chwilę na uruchomienie serwera
+      - name: Install dependencies
+        run: npm install
 
-     - name: Run Cypress Test
-       id: cypress-test
-       run: |
-        npx cypress run --browser chrome
-        echo "CYPRESS_EXIT_CODE=$?" >> $GITHUB_ENV || true
-      #  continue-on-error: true
-       env:
-         CYPRESS_USERNAME: ${{ secrets.CYPRESS_USERNAME }}
-         CYPRESS_PASSWORD: ${{ secrets.CYPRESS_PASSWORD }}
+      - name: Start Local Server
+        run: |
+          npx http-server -p 9000 &
+          sleep 2 # Poczekaj chwilę na uruchomienie serwera
 
-    #  - name: Upload Test Report
-    #    uses: actions/upload-artifact@v2
-    #    with:
-    #     #  continue-on-error: true
-    #      name: cypress-test-report
-    #      path: cypress/reports/html/index.html
-     - name: Set failed status
-       if: env.CYPRESS_EXIT_CODE != '0'
-       run: exit 1
+      - name: Run Cypress Test
+        id: cypress-test
+        run: |
+          npx cypress run --browser chrome
+          echo "CYPRESS_EXIT_CODE=$?" >> $GITHUB_ENV || true
 
- post:
+      - name: Set failed status
+        if: env.CYPRESS_EXIT_CODE != '0'
+        run: exit 1
 
-    always:
-     - name: Upload Test Report
-       uses: actions/upload-artifact@v2
-       with:
-         name: cypress-test-report
-         path: cypress/reports/html/index.html
+      - name: Upload Test Report
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: cypress-test-report
+          path: cypress/reports/html/index.html
