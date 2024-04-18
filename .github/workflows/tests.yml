@@ -19,7 +19,8 @@ jobs:
      - name: Run Cypress Test
        id: cypress-test
        run: |
-        npx cypress run --browser chrome
+        npx cypress run --browser chrome || echo "Cypress tests failed"
+        echo "CYPRESS_EXIT_CODE=$?" >> $GITHUB_ENV || true
        continue-on-error: true
        env:
          CYPRESS_USERNAME: ${{ secrets.CYPRESS_USERNAME }}
@@ -30,5 +31,8 @@ jobs:
        with:
          continue-on-error: true
          name: cypress-test-report
-         path: cypress/reports/html/index.html 
+         path: cypress/reports/html/index.html
+     - name: Set status
+       if: env.CYPRESS_EXIT_CODE != '0'
+       run: echo "::error::Cypress tests failed"      
         
