@@ -21,7 +21,7 @@ jobs:
        run: |
         npx cypress run --browser chrome || echo "Cypress tests failed"
         echo "CYPRESS_EXIT_CODE=$?" >> $GITHUB_ENV || true
-       continue-on-error: true
+      #  continue-on-error: true
        env:
          CYPRESS_USERNAME: ${{ secrets.CYPRESS_USERNAME }}
          CYPRESS_PASSWORD: ${{ secrets.CYPRESS_PASSWORD }}
@@ -29,7 +29,7 @@ jobs:
      - name: Upload Test Report
        uses: actions/upload-artifact@v2
        with:
-         continue-on-error: true
+        #  continue-on-error: true
          name: cypress-test-report
          path: cypress/reports/html/index.html
      - name: Set status
