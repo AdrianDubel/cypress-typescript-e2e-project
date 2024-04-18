@@ -16,11 +16,27 @@ describe("Login tests", () => {
       .and("contain.text", username);
   });
 
-  it.only("Login using wrong username", () => {
+  it("Login using wrong username", () => {
     cy.visit("/");
     loginPage.login('wrong_username', password);
     loginPage.elements.errorMessage()
       .should('be.visible')
       .and('contain.text', "Nieprawidłowa nazwa użytkownika.")
+  });
+
+  it("Login using wrong password", () => {
+    cy.visit("/");
+    loginPage.login(username, "wrongpass");
+    loginPage.elements.errorMessage()
+      .should('be.visible')
+      .and('contain.text', "Nieprawidłowe hasło.")
+  });
+
+  it("Login using wrong username and password", () => {
+    cy.visit("/");
+    loginPage.login('wrong_username', "wrongpass");
+    loginPage.elements.errorMessage()
+      .should('be.visible')
+      .and('contain.text', "Nieprawidłowa nazwa użytkownika i hasło.")
   });
 });
