@@ -21,7 +21,10 @@ jobs:
         run: |
           npx cypress run --browser chrome
           echo "CYPRESS_EXIT_CODE=$?" >> $GITHUB_ENV || true
-
+        env:
+         CYPRESS_USERNAME: ${{ secrets.CYPRESS_USERNAME }}
+         CYPRESS_PASSWORD: ${{ secrets.CYPRESS_PASSWORD }}
+         
       - name: Set status
         if: env.CYPRESS_EXIT_CODE != '0'
         run: exit 1
