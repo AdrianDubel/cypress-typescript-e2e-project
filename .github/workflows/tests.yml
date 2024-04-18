@@ -34,5 +34,5 @@ jobs:
          path: cypress/reports/html/index.html
      - name: Set status
        if: env.CYPRESS_EXIT_CODE != '0'
-       run: echo "::error::Cypress tests failed"      
+       run: echo "::error::Cypress tests failed" && exit 1      
         
