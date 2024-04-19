@@ -1,13 +1,12 @@
 import loginPage from "../support/pages/login.page";
 import homePage from "../support/pages/home.page";
+import { dataTests } from "../support/helpers/datatests";
 
 describe("Radio button tests", () => {
-  const username = Cypress.env("USERNAME");
-  const password = Cypress.env("PASSWORD");
-
+  
   beforeEach(() => {
     cy.visit("/");
-    loginPage.login(username, password);
+    loginPage.login(dataTests.username, dataTests.password)
   });
 
   it("First radio button test", () => {

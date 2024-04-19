@@ -1,10 +1,9 @@
 import loginPage from "../support/pages/login.page";
 import homePage from "../support/pages/home.page";
+import { dataTests } from "../support/helpers/datatests";
 
 describe("Login tests", () => {
 
-  const username = Cypress.env("USERNAME");
-  const password = Cypress.env("PASSWORD");
 
   beforeEach(() =>{
     cy.visit("/");
@@ -12,16 +11,16 @@ describe("Login tests", () => {
 
   it("Login using correct credentials", () => {
 
-    loginPage.login(username, password);
+    loginPage.login(dataTests.username, dataTests.password)
     homePage.elements
       .userName()
       .should("be.visible")
-      .and("contain.text", username);
+      .and("contain.text", dataTests.username);
   });
 
   it("Login using wrong username", () => {
 
-    loginPage.login('wrong_username', password);
+    loginPage.login('wrong_username', dataTests.password);
     loginPage.elements.errorMessage()
       .should('be.visible')
       .and('contain.text', "Nieprawidłowa nazwa użytkownika.")
@@ -29,7 +28,7 @@ describe("Login tests", () => {
 
   it("Login using wrong password", () => {
 
-    loginPage.login(username, "wrongpass");
+    loginPage.login(dataTests.username, "wrongpass");
     loginPage.elements.errorMessage()
       .should('be.visible')
       .and('contain.text', "Nieprawidłowe hasło.")
