@@ -6,9 +6,12 @@ describe("Login tests", () => {
   const username = Cypress.env("USERNAME");
   const password = Cypress.env("PASSWORD");
 
+  beforeEach(() =>{
+    cy.visit("/");
+  })
+
   it("Login using correct credentials", () => {
 
-    cy.visit("/");
     loginPage.login(username, password);
     homePage.elements
       .userName()
@@ -17,7 +20,7 @@ describe("Login tests", () => {
   });
 
   it("Login using wrong username", () => {
-    cy.visit("/");
+
     loginPage.login('wrong_username', password);
     loginPage.elements.errorMessage()
       .should('be.visible')
@@ -25,7 +28,7 @@ describe("Login tests", () => {
   });
 
   it("Login using wrong password", () => {
-    cy.visit("/");
+
     loginPage.login(username, "wrongpass");
     loginPage.elements.errorMessage()
       .should('be.visible')
@@ -33,7 +36,7 @@ describe("Login tests", () => {
   });
 
   it("Login using wrong username and password", () => {
-    cy.visit("/");
+
     loginPage.login('wrong_username', "wrongpass");
     loginPage.elements.errorMessage()
       .should('be.visible')

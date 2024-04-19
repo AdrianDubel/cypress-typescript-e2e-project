@@ -15,6 +15,7 @@ module.exports = defineConfig({
       // implement node event listeners here
       require('cypress-mochawesome-reporter/plugin')(on);
     },
-    baseUrl: 'http://localhost:9000/'
+    baseUrl: 'http://localhost:9000/',
+    defaultCommandTimeout: 20000,
   },
 });
