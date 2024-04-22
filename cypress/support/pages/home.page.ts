@@ -7,6 +7,9 @@ class HomePage {
     searchInput: () => cy.get('[data-testid="autocomplete"]'),
     searchResultBox: () => cy.get('#ui-id-1'),
     dropdown: () => cy.get('[data-testid="dropdown"]'),
+    checkbox1: () => cy.get('#checkBoxOption1'),
+    checkbox2: () => cy.get('#checkBoxOption2'),
+    checkbox3: () => cy.get('#checkBoxOption3'),
   };
 }
 
