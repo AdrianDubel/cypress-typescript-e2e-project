@@ -10,6 +10,8 @@ class HomePage {
     checkbox1: () => cy.get('#checkBoxOption1'),
     checkbox2: () => cy.get('#checkBoxOption2'),
     checkbox3: () => cy.get('#checkBoxOption3'),
+    openWindowBtn: () => cy.get('#openwindow'),
+    openTabBtn: () => cy.get('#opentab'),
   };
 }
 
